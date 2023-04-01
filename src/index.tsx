@@ -1,15 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect
+} from "react-router-dom";
+import Root from './routes/root';
+import ShowTicket from './components/ShowTicket';
+import Dashboard from './components/Dashboard';
+import CreateTicket from './components/CreateTicket';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children:[
+      {
+        path:"tickets",
+        element:  <Dashboard />
+      },
+      {
+        path:"tickets/create",
+        element:  <CreateTicket />
+      },
+      {
+      path:"tickets/:ticketid",
+      element:<ShowTicket />
+    }]
+  },
+]);
+
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

@@ -1,0 +1,1 @@
+export const STATE_ENUMS = [{ value: "open", label: "Open" }, { value: "in-progress", label: "In Progress" }, { value: "code-review", label: "Code Review" }, { value: "closed", label: "Closed" }]
