@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ticketsApi from '../../api/ticket'
-import { STATE_ENUMS } from '../../utils/constants'
 
 const CreateTicket = () => {
     const [details, setDetails] = useState("")
-    const [state, setState] = useState("")
     const navigate = useNavigate()
 
     const handleCreate = async ()=>{
       try{
-        const response = await ticketsApi.create({details,state})
+        const response = await ticketsApi.create({details,state:"open"})
         console.log(response)
         navigate("/tickets")
       }catch(err){
@@ -19,12 +17,12 @@ const CreateTicket = () => {
     }
 
   return (
-    <div>
-        <input type={"text"} className="border rounded" value={details} onChange={(e)=>setDetails(e.target.value)}/>
-        <select onChange={(e)=>{setState(e.target.value)}} value={state}>
-            {STATE_ENUMS.map((state, index)=><option key={index} value={state.value}>{state.label}</option>)}
-        </select>
-        <button onClick={handleCreate}>Create Ticket</button>
+    <div  className='w-3/5 m-auto flex flex-col space-y-4'>
+        <label className='font-bold'>Details</label>
+        <textarea className="border rounded" placeholder='What is this ticket about?' rows={10} value={details} onChange={(e)=>setDetails(e.target.value)}/>
+        
+      
+        <button onClick={handleCreate} className='w-40 bg-primary font-bold py-2 rounded-xl '>Create Ticket</button>
     </div>
   )
 }

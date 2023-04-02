@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'remixicon/fonts/remixicon.css'
 import reportWebVitals from './reportWebVitals';
 
 import {
   createBrowserRouter,
-  RouterProvider,
-  redirect
+  RouterProvider
 } from "react-router-dom";
 import Root from './routes/root';
-import ShowTicket from './components/ShowTicket';
 import Dashboard from './components/Dashboard';
 import CreateTicket from './components/CreateTicket';
+import TicketView from './components/TicketView';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
       path:"tickets/:ticketid",
-      element:<ShowTicket />
+      element:<TicketView />
     }]
   },
 ]);

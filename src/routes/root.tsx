@@ -5,12 +5,12 @@ const Root = () => {
     
   return (
     <div className='w-100 h-max'>
-        <nav className='fixed flex w-screen items-center justify-between top-0 p-4'>
+        <nav className='fixed bg-zinc-900 text-white font-bold flex w-screen items-center justify-between top-0 p-4'>
             <div>
-                <h1 className='font-bold text-2xl rounded '>swaypay support</h1>
+                <h1 className=' text-3xl rounded text-primary '><Link to="/">swaypay support</Link></h1>
             </div>
             <div>
-                <Link to={"/tickets/create"}>Add Ticket</Link>
+                <p className='hover:text-primary'><Link to={"/tickets/create"}>Create Ticket</Link></p>
             </div>
         </nav>
         <div className='mt-20 p-4'>
